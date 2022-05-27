@@ -1,7 +1,10 @@
+using RazorPagesLearning.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<IEventRepository, MockEventRepository>();
 
 var app = builder.Build();
 

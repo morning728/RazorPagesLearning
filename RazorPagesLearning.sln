@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagesGeneral", "RazorPagesGeneral\RazorPagesGeneral.csproj", "{CE8EEE73-91D8-41D6-8C0C-7365713941FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPagesGeneral", "RazorPagesGeneral\RazorPagesGeneral.csproj", "{CE8EEE73-91D8-41D6-8C0C-7365713941FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagesLearning.Models", "RazorPagesLearning.Models\RazorPagesLearning.Models.csproj", "{50696AFB-E8F0-413C-9861-8D14DA15E3B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagesLearning.Services", "RazorPagesLearning.Services\RazorPagesLearning.Services.csproj", "{E5D73FC1-FC44-4C87-B54C-93A157E245CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CE8EEE73-91D8-41D6-8C0C-7365713941FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE8EEE73-91D8-41D6-8C0C-7365713941FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE8EEE73-91D8-41D6-8C0C-7365713941FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50696AFB-E8F0-413C-9861-8D14DA15E3B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50696AFB-E8F0-413C-9861-8D14DA15E3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50696AFB-E8F0-413C-9861-8D14DA15E3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50696AFB-E8F0-413C-9861-8D14DA15E3B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D73FC1-FC44-4C87-B54C-93A157E245CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D73FC1-FC44-4C87-B54C-93A157E245CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D73FC1-FC44-4C87-B54C-93A157E245CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D73FC1-FC44-4C87-B54C-93A157E245CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

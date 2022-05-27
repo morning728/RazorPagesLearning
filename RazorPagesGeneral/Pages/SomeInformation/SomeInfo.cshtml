@@ -1,0 +1,26 @@
+﻿@page
+@model RazorPagesGeneral.Pages.SomeInformation.SomeInfoModel
+@{
+}
+<p>Some INfo</p>
+<h1>Size of Event List: @Model.events.Count()</></h1>
+<div class="row">
+    @foreach(var item in @Model.events){
+        <div class="col-12 text-center ">
+            <div class="card-deck">
+                <div class="card m-3">
+                    <div class="card-header text-center">
+                        <h3>@item.Name</h3>
+                    </div>
+                    <div class=" card-body text-center">
+                        <img src="/images/main_pic.jpg"></img>
+                    </div>
+                    <div class=" card-footer text-center">
+                        <p>@item.Id</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
