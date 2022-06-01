@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\test.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RazorPagesLearning.Models\RazorPagesLearning.Models.csproj" />
     <ProjectReference Include="..\RazorPagesLearning.Services\RazorPagesLearning.Services.csproj" />
   </ItemGroup>

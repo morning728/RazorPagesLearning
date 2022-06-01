@@ -7,16 +7,28 @@ namespace RazorPagesGeneral.Pages.SomeInformation
 {
     public class SomeInfoModel : PageModel
     {
-        private readonly IEventRepository _db; 
+        public IEventRepository _db;
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public SomeInfoModel(IEventRepository db)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             _db = db;
+            events = (List<Event>)_db.GetAllEvents();
         }
-
-        public IEnumerable<Event> events;
+        public List<Event> events;
+        public Event Event;
         public void OnGet()
         {
-            events = _db.GetAllEvents();
+           Event = new Event();
         }
+        public IActionResult OnPost(Event Event)
+        {
+#pragma warning disable CS8604 // Possible null reference argument.
+            _db.add_new_event(description: Event.Description, EventName:Event.EventName, Event.PosX, Event.PosY);
+#pragma warning restore CS8604 // Possible null reference argument.
+            events = (List<Event>)_db.GetAllEvents();
+            return Page();
+        }
+
     }
 }

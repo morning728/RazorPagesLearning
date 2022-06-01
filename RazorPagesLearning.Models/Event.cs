@@ -6,15 +6,35 @@ namespace RazorPagesLearning.Models
 {
     public class Event
     {
-        public Event(int id, Dept name)
+        public Event(int id, string desc, string eventName)
         {
             Id = id;
-            Name = name;
+            Description = desc;
+            EventName = eventName;
+            PosX = -1; PosY = -1;
+        }
+        public Event(int id)
+        {
+            Id = id; 
+            PosX = -1; PosY = -1;
+        }
+        public Event()
+        {
+            Id = -1;
+            Description = "empty_event";
+            EventName = "empty_event_name"; 
+            PosX = -1; PosY = -1;
         }
 
         public int Id { get; set; }
 
         public Dept? Name { get; set; }
+        public string? EventName { get; set; }
+
+        public string? Description { get; set; }
+
+        public int? PosX { get; set; }
+        public int? PosY { get; set; }
 
     }
 }

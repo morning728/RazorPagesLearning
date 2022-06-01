@@ -8,5 +8,6 @@ namespace RazorPagesLearning.Services
     public interface IEventRepository
     {
         IEnumerable<Event> GetAllEvents();
+        public void add_new_event(string description, string EventName, int? PosX=50, int? PosY=50);
     }
 }
