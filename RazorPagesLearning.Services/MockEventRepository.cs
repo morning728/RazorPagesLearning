@@ -12,11 +12,11 @@ namespace RazorPagesLearning.Services
         {
             EventList = new List<Event>()
             {
-                new Event(0, "153", "Imya"){PosX = 20, PosY=20 },
-                new Event(1, "166", "Imya"){PosX = 100, PosY=30 },
-                new Event(2){PosX = 40, PosY=40 },
-                new Event(3){PosX = -1, PosY=-1 },
-                new Event(4, "181", "Imya"){PosX = 70, PosY=70 }
+                new Event(0, "Некое описание ляляля", "Event 1"){PosX = 20, PosY=20 },
+                new Event(1, "Некое описание ляляля", "Event 2"){PosX = 500, PosY=690 },
+                new Event(2,"Некое описание ляляля","Event 3"){PosX = 100, PosY=600 },
+                new Event(3,"Некое описанfggggggggggggggggggggggggggggggggfgggggggggggggggggggggggggggggggggggие ляляля","Event 4"){PosX = -1, PosY=-1 },
+                new Event(4, "Некое описание ляляля", "Event 5"){PosX = 1000, PosY=800 }
             };
         }
 

@@ -1,12 +1,11 @@
 ﻿var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 
-let path1 = new Path2D();
-path1.rect(4, 4, 992, 392);
 
+let tchbl = new Path2D();
 
 var village_img = new Image();
-village_img.src = '/images/village_pic.png';
+village_img.src = '/images/viltest1.jpg';
 village_img.onload = drawImageActualSize;
 
 var pointer_img = new Image();
@@ -18,15 +17,16 @@ var logElemY = document.querySelector(".innerY");
 const count = document.getElementById("Main_script").dataset.container
 
 function drawImageActualSize() {
-    canvas.width = 1000;
-    canvas.height = 400;
+    canvas.width = this.naturalWidth;
+    canvas.height = this.naturalHeight;
+    tchbl.rect(0, 0, 4000, 4000);
     ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
-    ctx.stroke(path1);
+    ctx.stroke(tchbl);
     for (var i = 0; i < count; i++) {
         X = document.getElementById(i + "X").innerHTML
         Y = document.getElementById(i + "Y").innerHTML
         if (X != "-1" && Y != "-1") {
-            ctx.drawImage(pointer_img, X, Y, 20, 29)
+            ctx.drawImage(pointer_img, X, Y, 40, 58)
         }
 
     }
@@ -36,9 +36,10 @@ function drawImageActualSize() {
 
 
 canvas.addEventListener('click', function (event) {
-    if (ctx.isPointInPath(path1, event.offsetX, event.offsetY)) {
-        ctx.drawImage(pointer_img, event.offsetX - 9, event.offsetY - 29, 20, 29)
-        logElemX.innerHTML = event.offsetX - 9;
-        logElemY.innerHTML = event.offsetY - 29;
+    var kef = canvas.width / 1440;
+    if (ctx.isPointInPath(tchbl, event.offsetX, event.offsetY)) {
+        ctx.drawImage(pointer_img, event.offsetX*kef  - 20 , event.offsetY*kef -47 , 40, 58)
+        logElemX.innerHTML = event.offsetX  - 20;
+        logElemY.innerHTML = event.offsetY  - 47;
     }
 });

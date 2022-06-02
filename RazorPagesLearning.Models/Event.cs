@@ -15,8 +15,7 @@ namespace RazorPagesLearning.Models
         }
         public Event(int id)
         {
-            Id = id; 
-            PosX = -1; PosY = -1;
+            Id = id;
         }
         public Event()
         {
@@ -25,6 +24,7 @@ namespace RazorPagesLearning.Models
             EventName = "empty_event_name"; 
             PosX = -1; PosY = -1;
         }
+        
 
         public int Id { get; set; }
 
