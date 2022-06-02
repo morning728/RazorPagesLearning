@@ -35,7 +35,7 @@
           <div class="row justify-content-center">
             <div class="col-11 ">
 
-              <form method="post">
+              <form method="post" enctype="multipart/form-data">
                     
                     <div class="row form-group">
                       <div class="col-md-12">
@@ -65,11 +65,16 @@
                        <span asp-validation-for="Event.PosY" class="text-danger"></span>
                       </div>
                     </div>
+                    <div class="row">
+                        <div class="row form-group">
+                          <div class="col-md-12">
+                            <input type="submit" value="add" class="btn btn-primary btn-md text-white">
+                          </div>
+                        </div>
 
-                    <div class="row form-group">
-                      <div class="col-md-12">
-                        <input type="submit" value="add" class="btn btn-primary btn-md text-white">
-                      </div>
+                        <div class="col-md-6">
+                            <input  id="PosY" class="form-control custom-file-input" asp-for="Photo">
+                        </div>    
                     </div>
                   </form>
             </div>
@@ -82,12 +87,12 @@
 
 
         @for (var i = 0;i< @Model.events.Count(); i++){
+            string path1 = $"/images/{Model.events[i].PhotoPath ?? "noImageCase.jpg"}";
             <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
-              <a href="~/images/Event@(i+1)pic.jpg" class="d-block photo-item" data-fancybox="gallery">
-                <img src="~/images/Event@(i+1)pic.jpg" alt="Image" class="img-fluid">
+                <a href=@path1 class="d-block photo-item" data-fancybox="gallery">
+                <img src=@path1 alt="Image" class="img-fluid">
                 <div class="photo-text-more">
-                  <span >
-                      <div class="card m-3">
+                    <div class="card m-3">
                     <div class="card-header text-center">
                         <h3>@Model.events[i].EventName</h3>
                     </div>
@@ -105,7 +110,6 @@
                         </div>
                     </div>
                 </div>
-                  </span>
                 </div>
               </a>
             </div>

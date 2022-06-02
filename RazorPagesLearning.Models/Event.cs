@@ -27,14 +27,14 @@ namespace RazorPagesLearning.Models
         
 
         public int Id { get; set; }
-
-        public Dept? Name { get; set; }
         public string? EventName { get; set; }
 
         public string? Description { get; set; }
 
         public int? PosX { get; set; }
         public int? PosY { get; set; }
+
+        public string? PhotoPath { get; set; }
 
     }
 }

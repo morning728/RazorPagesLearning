@@ -24,7 +24,7 @@ namespace RazorPagesGeneral.Pages.SomeInformation
         public IActionResult OnPost(Event Event)
         {
 #pragma warning disable CS8604 // Possible null reference argument.
-            _db.add_new_event(description: Event.Description, EventName:Event.EventName, Event.PosX, Event.PosY);
+            _db.add_new_event(description: Event.Description, EventName:Event.EventName, Event.PhotoPath, Event.PosX, Event.PosY);
 #pragma warning restore CS8604 // Possible null reference argument.
             events = (List<Event>)_db.GetAllEvents();
             return Page();
