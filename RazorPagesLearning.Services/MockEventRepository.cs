@@ -31,5 +31,12 @@ namespace RazorPagesLearning.Services
             EventList.Add(new Event(new Random().Next(), description, EventName) {PosX = Posx, PosY = Posy, PhotoPath = photoPath });
             //@Console.WriteLine(description);
         }
+
+        public Event GetEventByID(int id) {
+            foreach (var item in EventList) {
+                if(item.Id == id) return item;
+            }
+            return new Event();
+        }
     }
 }

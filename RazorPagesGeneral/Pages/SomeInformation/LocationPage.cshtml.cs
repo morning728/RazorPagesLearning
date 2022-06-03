@@ -5,12 +5,12 @@ using RazorPagesLearning.Services;
 
 namespace RazorPagesGeneral.Pages.SomeInformation
 {
-    public class HopeMainModel : PageModel
+    public class LocationPageModel : PageModel
     {
         private readonly IEventRepository _db;
         private readonly IWebHostEnvironment _webHostEnvironment;
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public HopeMainModel(IEventRepository db, IWebHostEnvironment webHostEnvironment)
+        public LocationPageModel(IEventRepository db, IWebHostEnvironment webHostEnvironment)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             _db = db;

@@ -36,10 +36,17 @@ function drawImageActualSize() {
 
 
 canvas.addEventListener('click', function (event) {
-    var kef = canvas.width / 1440;
+    const windowInnerWidth = window.innerWidth
+    var kef = canvas.width / (windowInnerWidth-260);
     if (ctx.isPointInPath(tchbl, event.offsetX, event.offsetY)) {
-        ctx.drawImage(pointer_img, event.offsetX*kef  - 20 , event.offsetY*kef -47 , 40, 58)
+        ctx.drawImage(pointer_img, event.offsetX * kef - 20, event.offsetY * kef - 47, 40, 58)
+        //alert(windowInnerWidth);
+
         logElemX.innerHTML = event.offsetX  - 20;
-        logElemY.innerHTML = event.offsetY  - 47;
+        logElemY.innerHTML = event.offsetY - 47;
+
+        
+        
+        
     }
 });

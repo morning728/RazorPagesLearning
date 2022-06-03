@@ -1,5 +1,5 @@
 ﻿@page
-@model RazorPagesGeneral.Pages.SomeInformation.HopeMainModel
+@model RazorPagesGeneral.Pages.SomeInformation.LocationPageModel
 @{
 }
 
@@ -89,7 +89,7 @@
         @for (var i = 0;i< @Model.events.Count(); i++){
             string path1 = $"/images/{Model.events[i].PhotoPath ?? "noImageCase.jpg"}";
             <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
-                <a href=@path1 class="d-block photo-item" data-fancybox="gallery">
+                <a asp-page="/SomeInformation/EventEditPage" asp-route-id="@Model.events[i].Id" class="d-block photo-item" >
                 <img src=@path1 alt="Image" class="img-fluid">
                 <div class="photo-text-more">
                     <div class="card m-3">
@@ -287,9 +287,7 @@
   <script src="~/js/jquery.magnific-popup.min.js"></script>
   <script src="~/js/bootstrap-datepicker.min.js"></script>
   <script src="~/js/aos.js"></script>
-  
-
   <script src="~/js/jquery.fancybox.min.js"></script>
-  <script src="~/js/map-script.js" data-container=@Model.events.Count() id="Main_script"></script>
-
   <script src="~/js/main.js"></script>
+
+    <script src="~/js/map-script.js" data-container=@Model.events.Count() id="Main_script"></script>

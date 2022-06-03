@@ -9,5 +9,7 @@ namespace RazorPagesLearning.Services
     {
         IEnumerable<Event> GetAllEvents();
         public void add_new_event(string description, string EventName, string? photoPath, int? PosX=50, int? PosY=50);
+
+        public Event GetEventByID(int id);
     }
 }
