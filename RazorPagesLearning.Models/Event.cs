@@ -19,9 +19,7 @@ namespace RazorPagesLearning.Models
         }
         public Event()
         {
-            Id = -1;
-            Description = "empty_event";
-            EventName = "empty_event_name"; 
+            Id = new Random().Next();
             PosX = -1; PosY = -1;
         }
         
@@ -35,6 +33,8 @@ namespace RazorPagesLearning.Models
         public int? PosY { get; set; }
 
         public string? PhotoPath { get; set; }
+        public string? Date { get; set; }
+        public int? LocationId { get; set; }
 
     }
 }

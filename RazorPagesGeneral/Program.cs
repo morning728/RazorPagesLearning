@@ -1,10 +1,12 @@
-using RazorPagesLearning.Services;
+using RazorPagesLearning.Services.EventRepository;
+using RazorPagesLearning.Services.LocationRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IEventRepository, MockEventRepository>();
+builder.Services.AddSingleton<ILocationRepository, MockLocationRepository>();
 
 var app = builder.Build();
 

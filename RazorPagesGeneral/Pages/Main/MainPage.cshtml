@@ -1,0 +1,96 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Main.MainPageModel
+@{
+}
+
+  <main class="main-content">
+   
+    <div class="container-fluid">
+      <section class="row align-items-stretch photos" id="section-photos">
+        <div class="col-12">
+        <div class="row align-items-stretch">
+
+
+      <section class=" darken-bg" style="padding-left:2.7em; padding-right:2.7em; padding-top:0.5em" id="section-contact">
+        
+          <div class="row justify-content-center" style="padding-top:4em; padding-left:1.69em">
+            <div class="col-11 ">
+
+              <form method="post" enctype="multipart/form-data">
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                        <label class="text-white" >location name</label> 
+                        <input  id="locationName" class="form-control" placeholder="Moscow" asp-for="Location.Name">
+                        <span asp-validation-for="Location.Name" class="text-danger"></span>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="row form-group">
+                          <div class="col-md-12">
+                            <input type="submit" value="add" class="btn btn-primary btn-md text-white">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input  id="PosY" class="form-control custom-file-input" asp-for="Photo">
+                        </div>    
+                    </div>
+                  </form>
+            </div>
+          </div>
+        
+      </section>
+
+
+
+
+
+        @for (var i = 0;i< @Model.locations.Count(); i++){
+            string path1 = $"/images/{Model.locations[i].PhotoPath ?? "noImageCase.jpg"}";
+            <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
+                <a asp-page="/Locations/LocationPage" asp-route-id="@Model.locations[i].Id" class="d-block photo-item" >
+                <img src=@path1 alt="Image" class="img-fluid">
+                <div class="photo-text-more LocationNameStyle" style="color:#df0e62">
+                        <h3>@Model.locations[i].Name</h3>
+                </div>
+              </a>
+            </div>
+        }
+      </div>
+    </div>
+
+      </section> <!-- #section-photos -->
+
+      
+
+
+
+      <div class="row justify-content-center">
+        <div class="col-md-12 text-center py-5">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <script src="~/js/jquery-3.3.1.min.js"></script>
+  <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="~/js/jquery.easing.1.3.js"></script>
+  <script src="~/js/jquery-ui.js"></script>
+  <script src="~/js/popper.min.js"></script>
+  <script src="~/js/bootstrap.min.js"></script>
+  <script src="~/js/owl.carousel.min.js"></script>
+  <script src="~/js/jquery.stellar.min.js"></script>
+  <script src="~/js/jquery.countdown.min.js"></script>
+  <script src="~/js/jquery.magnific-popup.min.js"></script>
+  <script src="~/js/bootstrap-datepicker.min.js"></script>
+  <script src="~/js/aos.js"></script>
+  <script src="~/js/jquery.fancybox.min.js"></script>
+  <script src="~/js/main.js"></script>
