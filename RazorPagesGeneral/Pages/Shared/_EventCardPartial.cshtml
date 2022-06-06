@@ -1,0 +1,30 @@
+﻿@model Event
+@{
+    string path1 = $"/images/{Model.PhotoPath ?? "noImageCase.jpg"}";
+}
+
+<div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
+    <a asp-page="/Locations/EventEditPage" asp-route-id="@Model.Id" class="d-block photo-item">
+        <img src=@path1 alt="Image" class="img-fluid">
+        <div class="photo-text-more">
+            <div class="card m-3">
+                <div class="card-header text-center">
+                    <h3>@Model.EventName</h3>
+                </div>
+                <div class="card-body">
+                    <p style="margin-top:10px">Description: @Model.Description</p>
+                    <div class=" row">
+                        <div class="col-5">
+                            <div>X-Position: </div>
+                            <div>Y-Position: </div>
+                        </div>
+                        <div class=" col-auto">
+                            <div>@Model.PosX</div>
+                            <div>@Model.PosY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
