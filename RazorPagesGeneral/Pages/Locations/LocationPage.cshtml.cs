@@ -35,7 +35,7 @@ namespace RazorPagesGeneral.Pages.Locations
             events = (List<Event>)_db.GetAllEvents();
             Event = new Event(728);
         }
-        public void OnPost(Event Event, int id)
+        public IActionResult OnPost(Event Event, int id)
         {
             if (Event.PhotoPath != null) {
 
@@ -52,6 +52,8 @@ namespace RazorPagesGeneral.Pages.Locations
 #pragma warning restore CS8604 // Possible null reference argument.
             
             events = (List<Event>)_db.GetAllEvents();
+
+            return Page();
         }
 
         private string? UploadFile() {

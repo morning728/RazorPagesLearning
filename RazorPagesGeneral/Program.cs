@@ -1,9 +1,14 @@
+using RazorPagesLearning.Services;
 using RazorPagesLearning.Services.EventRepository;
 using RazorPagesLearning.Services.LocationRepository;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
+
+//builder.Services.AddDbContext<AppDBContext>(options => { options.UseSqlServer("server=(localdb)\\MSSQLLocalDB;DataBase=loqaciadb;Trusted_Connection=True"); });
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IEventRepository, MockEventRepository>();
 builder.Services.AddSingleton<ILocationRepository, MockLocationRepository>();
