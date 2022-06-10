@@ -18,12 +18,12 @@ namespace RazorPagesGeneral.Pages.Locations
             _db_locations = db_l;
             _db = db;
             _webHostEnvironment = webHostEnvironment;
-            events = (List<Event>)_db.GetAllEvents();
+            events = _db.GetAllEvents();
         }
 
         public Location? Location;
 
-        public List<Event> events;
+        public IEnumerable<Event> events;
         public Event Event;
 
         [BindProperty]
@@ -32,8 +32,8 @@ namespace RazorPagesGeneral.Pages.Locations
         {
             Location = _db_locations.GetLocationByID(id);
             Console.WriteLine(Location.Id);
-            events = (List<Event>)_db.GetAllEvents();
-            Event = new Event(728);
+            events = _db.GetAllEvents();
+            //Event = new Event(728);
         }
         public IActionResult OnPost(Event Event, int id)
         {
@@ -51,7 +51,7 @@ namespace RazorPagesGeneral.Pages.Locations
             _db.add_new_event(Event);
 #pragma warning restore CS8604 // Possible null reference argument.
             
-            events = (List<Event>)_db.GetAllEvents();
+            events = _db.GetAllEvents();
 
             return Page();
         }

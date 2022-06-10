@@ -15,17 +15,17 @@ namespace RazorPagesGeneral.Pages.Main
         {
             _db = db;
             _webHostEnvironment = webHostEnvironment;
-            locations = (List<Location>)_db.GetAllLocations();
+            locations =_db.GetAllLocations();
         }
-        public List<Location> locations;
+        public IEnumerable<Location> locations;
         public Location Location;
 
         [BindProperty]
         public IFormFile Photo { get; set; }
         public void OnGet()
         {
-            locations = (List<Location>)_db.GetAllLocations();
-            Location = new Location() {Name = "" };
+            locations = _db.GetAllLocations();
+            //Location = new Location() {Name = "" };
         }
         public IActionResult OnPost(Location Location)
         {
@@ -43,7 +43,7 @@ namespace RazorPagesGeneral.Pages.Main
             _db.AddLocation(Location);
 #pragma warning restore CS8604 // Possible null reference argument.
 
-            locations = (List<Location>)_db.GetAllLocations();
+            locations = _db.GetAllLocations();
 
             return Page();
         }

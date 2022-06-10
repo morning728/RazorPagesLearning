@@ -10,13 +10,7 @@ namespace RazorPagesLearning.Services.LocationRepository
         private List<Location> LocationList;
         public MockLocationRepository()
         {
-            LocationList = new List<Location>() {
-                new Location(){Name = "Moscow" , Id = 1},
-                new Location(){Name = "St-Petersburg" },
-                new Location(){Name = "Sergovo" },
-                new Location(){Name = "univercity" },
-                new Location(){Name = "the yard" }
-            };
+            LocationList = new List<Location>() {};
         }
         public void AddLocation(Location location)
         {

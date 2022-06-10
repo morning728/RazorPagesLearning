@@ -19,7 +19,7 @@ namespace RazorPagesGeneral.Pages.Locations
         public Event Event;
         public void OnGet()
         {
-           Event = new Event();
+           //Event = new Event();
         }
         public IActionResult OnPost(Event Event)
         {

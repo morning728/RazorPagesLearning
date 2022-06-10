@@ -8,10 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddDbContext<AppDBContext>(options => { options.UseSqlServer("server=(localdb)\\MSSQLLocalDB;DataBase=loqaciadb;Trusted_Connection=True"); });
+builder.Services.AddDbContext<AppDBContext>();
 builder.Services.AddRazorPages();
-builder.Services.AddSingleton<IEventRepository, MockEventRepository>();
-builder.Services.AddSingleton<ILocationRepository, MockLocationRepository>();
+builder.Services.AddScoped<IEventRepository, SQLEventRepository>();
+//builder.Services.AddSingleton<IEventRepository, MockEventRepository>();
+builder.Services.AddScoped<ILocationRepository, SQLLocationRepository>();
+//builder.Services.AddSingleton<ILocationRepository, MockLocationRepository>();
 
 var app = builder.Build();
 

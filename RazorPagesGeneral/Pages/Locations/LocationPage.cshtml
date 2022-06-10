@@ -89,18 +89,23 @@
 
 
 
-                    @for (var i = 0; i < @Model.events.Count(); i++)
+                    @foreach (var i in Model.events)
                     {
-                        if (@Model.events[i].LocationId == @Model.Location.Id)
+                        if (i.LocationId == @Model.Location.Id)
                         {
-                            <partial name="_EventCardPartial" model=@Model.events[i]/>
+                            <partial name="_EventCardPartial" model=i/>
                             <script src="~/js/CardPointerDrawingScript.js" 
-                                data-container="@(Model.events[i].PosX)/@(Model.events[i].PosY)"
+                                data-container="@(i.PosX)/@(i.PosY)"
                                 name="pointer-drawner">
                             </script>
                             
                         }
                     }
+                    <script src="~/js/CardPointerDrawingScript.js" 
+                                data-container="@(Model.events.First().PosX)/@(Model.events.First().PosY)"
+                                name="pointer-drawner">
+                            </script>
+
                 </div>
             </div>
 

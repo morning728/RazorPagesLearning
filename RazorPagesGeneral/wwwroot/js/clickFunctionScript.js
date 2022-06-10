@@ -18,7 +18,7 @@ canvas.addEventListener('click', function (event) {
 
         ctx.drawImage(pointer_img, event.offsetX * kef - 20, event.offsetY * kef - 47, 40, 58)
 
-        logElemX.innerHTML = event.offsetX * kef - 20;
-        logElemY.innerHTML = event.offsetY * kef - 47;
+        logElemX.innerHTML = parseInt(event.offsetX * kef - 20);
+        logElemY.innerHTML = parseInt(event.offsetY * kef - 47);
     }
 });
