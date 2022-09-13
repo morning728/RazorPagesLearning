@@ -22,8 +22,7 @@ namespace RazorPagesLearning.Services.EventRepository
         public void add_new_event(Event Event)
         {
             EventList.Add(new Event() { 
-                PosX = Event.PosX, 
-                PosY = Event.PosY,
+                
                 PhotoPath = Event.PhotoPath ,
                 EventName = Event.EventName,
                 Description = Event.Description,
@@ -48,9 +47,7 @@ namespace RazorPagesLearning.Services.EventRepository
                 if (item.Id == newEvent.Id)
                 {
                     item.EventName = newEvent.EventName;
-                    item.PosY = newEvent.PosY;
                     item.PhotoPath = newEvent.PhotoPath;
-                    item.PosX = newEvent.PosX;
                     item.Description = newEvent.Description;
                     item.Date = newEvent.Date;
                     return;
@@ -58,5 +55,7 @@ namespace RazorPagesLearning.Services.EventRepository
             }
             return;
         }
+
+       
     }
 }

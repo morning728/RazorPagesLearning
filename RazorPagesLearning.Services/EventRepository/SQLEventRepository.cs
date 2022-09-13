@@ -35,5 +35,7 @@ namespace RazorPagesLearning.Services.EventRepository
             Event.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
         }
+
+        
     }
 }

@@ -13,5 +13,7 @@ namespace RazorPagesLearning.Services.EventRepository
         public Event GetEventByID(int id);
 
         public void UpdateEvent(Event newEvent);
+
+        
     }
 }

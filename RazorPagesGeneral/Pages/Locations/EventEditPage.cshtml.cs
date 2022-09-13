@@ -6,16 +6,19 @@ using RazorPagesLearning.Services.LocationRepository;
 
 namespace RazorPagesGeneral.Pages.Locations
 {
+    
     public class EventEditPageModel : PageModel
     {
         private readonly ILocationRepository _db_locations;
         private IEventRepository _db;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public Event Event;
+        
+        
         public Location Location;
         [BindProperty]
-        public IFormFile Photo { get; set; }
+        public IFormFileCollection Photo { get; set; }
+        public Event Event;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public EventEditPageModel(IEventRepository db, IWebHostEnvironment webHostEnvironment, ILocationRepository db_locations) {
@@ -38,13 +41,13 @@ namespace RazorPagesGeneral.Pages.Locations
             {
 
                 string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", Event.PhotoPath);
-                Console.WriteLine("21");
                 System.IO.File.Delete(filePath);
 
             }
             if (Photo != null)
             {
-                Event.PhotoPath = UploadFile();
+                Event.Photos = UploadFile(Event);
+                Event.PhotoPath = GetFirstPhotoPath(Event);
             }
 
             #pragma warning disable CS8604 // Possible null reference argument.
@@ -54,21 +57,40 @@ namespace RazorPagesGeneral.Pages.Locations
             return RedirectToPage("LocationPage", Location);
         }
 
-        private string? UploadFile()
+        private string? UploadFile(Event Event)
         {
             string? newFileName = null;
+            string addedPhotos = "";
+            if (Event.Photos != null)
+            {
+                addedPhotos = Event.Photos;
+            }
             if (Photo != null)
             {
-                string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-                newFileName = Guid.NewGuid().ToString() + Photo.FileName;
-                string filePath = Path.Combine(uploadFolder, newFileName);
-
-                using (var fs = new FileStream(filePath, FileMode.Create))
+                foreach (var i in Photo)
                 {
-                    Photo.CopyTo(fs);
+                    string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                    newFileName = Guid.NewGuid().ToString() + i.FileName;
+                    addedPhotos += "," + newFileName;
+                    string filePath = Path.Combine(uploadFolder, newFileName);
+
+                    using (var fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        i.CopyTo(fs);
+                    }
                 }
             }
-            return newFileName;
+            return addedPhotos;
+        }
+
+        public string GetFirstPhotoPath(Event Event)
+        {
+            if (Event.Photos != null)
+            {
+                IEnumerable<string> _list = Event.Photos.Split(",");
+                return _list.Last(); ;
+            }
+            else { return "noImageCase.jpg"; }
         }
     }
 }

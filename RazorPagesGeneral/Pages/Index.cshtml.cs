@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace RazorPagesGeneral.Pages
 {
@@ -12,8 +16,15 @@ namespace RazorPagesGeneral.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        [Authorize]
+        public IActionResult OnGet()
         {
+            return Content(User.Identity.Name + "aaa");
         }
+        //public async Task<IActionResult> OnPost()
+        //{
+        //    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //    return RedirectToPage("/Account/Login");
+        //}
     }
 }

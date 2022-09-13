@@ -7,10 +7,7 @@
 ///////////////////////////////////////////////////////////////////////
 //Form and canvas
 ///////////////////////////////////////////////////////////////////////
-<div class="row">
-    <div class="col-1 innerX">X-pos</div>
-    <div class="col-1 innerY">Y-pos</div>
-</div>
+
 <div class=" row">
     <div class=" col-auto">
         <canvas id='canvas' width="1000" height="400"></canvas>
@@ -29,18 +26,7 @@
                     <span asp-validation-for="Event.Description" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col">
-                    <input asp-for="Event.PosX" class="form-control" placeholder="X-Position" />
-                    <span asp-validation-for="Event.PosX" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col">
-                    <input asp-for="Event.PosY" class="form-control" placeholder="Y-Position" />
-                    <span asp-validation-for="Event.PosY" class="text-danger"></span>
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col">
                     <div class="card-footer text-center" style="background-color: rgba(0, 0, 0, 0.25);">
@@ -69,14 +55,7 @@
                         <img src="/images/main_pic.jpg" width="30" height="30">
                         <p style="margin-top:10px">Description: @Model.events[i].Description</p>
                         <div class=" row">
-                            <div class="col-5">
-                                <div>X-Position: </div>
-                                <div>Y-Position: </div>
-                            </div>
-                            <div class=" col-auto">
-                                <div id="@(i)X">@Model.events[i].PosX</div>
-                                <div id="@(i)Y">@Model.events[i].PosY</div>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class=" card-footer text-center">

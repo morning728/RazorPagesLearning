@@ -13,5 +13,5 @@ const count = document.getElementById("Main_script").dataset.container
 function drawImageActualSize() {
     canvas.width = this.naturalWidth;
     canvas.height = this.naturalHeight;
-    ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(this, 0, 0, this.naturalWidth, this.naturalHeight);
 }

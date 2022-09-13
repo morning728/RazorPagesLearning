@@ -17,9 +17,9 @@ namespace RazorPagesGeneral.Pages.Locations
         }
         public List<Event> events;
         public Event Event;
-        public void OnGet()
+        public void OnGet(Event Event)
         {
-           //Event = new Event();
+           Event = new Event() { Photos = ",noImageCase.jpg,kurva.png"};
         }
         public IActionResult OnPost(Event Event)
         {

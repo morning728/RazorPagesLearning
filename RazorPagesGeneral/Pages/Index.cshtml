@@ -3,4 +3,9 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
+<div style="text-align:center">
+    <h1>@User.Identity.Name</h1>
+    <form method="post">
+        <input type="submit" value="out" />
+    </form>
+</div>

@@ -6,16 +6,27 @@
 
 
 <main class="main-content">
-    <div class="row">
+@*    <div class="row">
         <canvas id="canvas" class="col-12" data-container="@path"></canvas>
     </div>
     <div class="row">
         <div class="col-1" id="X-coord">X-pos</div>
         <div class="col-1 " id="Y-coord">Y-pos</div>
+    </div>*@
+
+@*    <script src="~/js/map-script.js" data-container=@Model.events.Count() id="Main_script"></script>
+*@
+
+    <div class="row">
+        <div class="col-sm">
+            <img src = "@path"/>
+            <br />
+            <br />
+        </div>
+        <div class="col-sm">
+            hello
+        </div>
     </div>
-
-    <script src="~/js/map-script.js" data-container=@Model.events.Count() id="Main_script"></script>
-
 
 
 
@@ -58,16 +69,7 @@
                                         </div>
 
                                         <div class="row form-group">
-                                            <div class="col-md-6 mb-3 mb-md-0">
-                                                @*<label class="text-white" >X-position</label>*@
-                                                <input id="PosX" class="form-control" style="-webkit-appearance:none; -moz-appearance: textfield;" placeholder="X-position" asp-for="Event.PosX">
-                                                <span asp-validation-for="Event.PosX" class="text-danger"></span>
-                                            </div>
-                                            <div class="col-md-6">
-                                                @*<label class="text-white">Y-position</label>*@
-                                                <input id="PosY" class="form-control" style="-webkit-appearance:none; -moz-appearance: textfield;" placeholder="Y-position" asp-for="Event.PosY">
-                                                <span asp-validation-for="Event.PosY" class="text-danger"></span>
-                                            </div>
+                                            
                                         </div>
                                         <div class="row">
                                             <div class="row form-group">
@@ -94,17 +96,17 @@
                         if (i.LocationId == @Model.Location.Id)
                         {
                             <partial name="_EventCardPartial" model=i/>
-                            <script src="~/js/CardPointerDrawingScript.js" 
+                            @*<script src="~/js/CardPointerDrawingScript.js" 
                                 data-container="@(i.PosX)/@(i.PosY)"
                                 name="pointer-drawner">
-                            </script>
+                            </script>*@
                             
                         }
                     }
-                    <script src="~/js/CardPointerDrawingScript.js" 
+                    @*<script src="~/js/CardPointerDrawingScript.js" 
                                 data-container="@(Model.events.First().PosX)/@(Model.events.First().PosY)"
                                 name="pointer-drawner">
-                            </script>
+                            </script>*@
 
                 </div>
             </div>
@@ -282,5 +284,5 @@
 <script src="~/js/jquery.fancybox.min.js"></script>
 <script src="~/js/main.js"></script>
 
-<script src="~/js/clickFunctionScript.js"></script>
+@*<script src="~/js/clickFunctionScript.js"></script>*@
 

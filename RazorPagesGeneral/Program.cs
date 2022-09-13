@@ -2,6 +2,7 @@ using RazorPagesLearning.Services;
 using RazorPagesLearning.Services.EventRepository;
 using RazorPagesLearning.Services.LocationRepository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,12 @@ builder.Services.AddScoped<IEventRepository, SQLEventRepository>();
 //builder.Services.AddSingleton<IEventRepository, MockEventRepository>();
 builder.Services.AddScoped<ILocationRepository, SQLLocationRepository>();
 //builder.Services.AddSingleton<ILocationRepository, MockLocationRepository>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
 
 var app = builder.Build();
 
@@ -30,6 +37,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

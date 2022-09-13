@@ -1,0 +1,27 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Account.RegisterModel
+@{
+}
+<div style="text-align:center">
+    <h2>Регистрация</h2>
+ 
+    <form method="post" asp-anti-forgery="true">
+        <div class="validation"></div>
+        <div>
+            <div>
+                <label asp-for="user.login">Введите login</label><br />
+                <input type="text" asp-for="user.login" />
+                <span asp-validation-for="user.login" />
+            </div>
+            <div>
+                <label asp-for="user.password">Введите пароль</label><br />
+                <input asp-for="user.password" />
+                <span asp-validation-for="user.password" />
+            </div>
+            <div>
+                <input type="submit" value="Регистрация" />
+            </div>
+        </div>
+    </form>
+</div>
+

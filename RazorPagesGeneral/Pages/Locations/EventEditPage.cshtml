@@ -11,6 +11,8 @@
 
               <form method="post" enctype="multipart/form-data">
                   <input type="hidden" asp-for="Event.Id">
+                  <input type="hidden" asp-for="Event.Photos">
+                  
                   <input type="hidden" asp-for="Event.LocationId">
                   <input type="hidden" asp-for="Event.PhotoPath">
                     
@@ -22,13 +24,29 @@
                       </div>
                     </div>
 
-                    <section class="row align-items-stretch photos align-content-center" style="padding-left:12.5em; padding-right:10em; padding-top:2em;padding-bottom:2em" id="section-photos">         
-                        <a   class="d-block photo-item" style="width:700px; text-align:center; align-content:center" >
-                            <img src=@path alt="Image" class="img-fluid">
-                            <div class="photo-text-more">
-                                <input  id="photo" class="form-control" asp-for="Photo">
+                    <section class="row align-items-stretch" id="section-photos">   
+                        <div class="container-fluid">
+                            <div class="row">
+                                
+                                    @if (Model.Event.Photos != null)
+                                    {
+                                        @foreach (var item in Model.Event.Photos.Split(","))
+                                        {
+                                            if(item != ""){
+                                               <div class="col-auto">
+                                               <img src = "/images/@item" alt="photo" style="padding-bottom:5px" class="align-content-center" width="520px">
+                                               </div>
+                                            }
+                                            
+                                        }
+
+                                    }
+                                <div class="photo-text-more col-auto">
+                                    <input  id="photo" class="form-control" asp-for="Photo">
+                                </div>
                             </div>
-                        </a>
+                        </div>
+                        
                      </section>
 
                     <div class="row form-group mb-5">
@@ -40,16 +58,7 @@
                     </div>
 
                     <div class="row form-group">
-                      <div class="col-md-4">
-                        <label class="text-white" >X-position</label>
-                        <input  id="PosX" class="form-control" style="-webkit-appearance:none; -moz-appearance: textfield;" placeholder="X-position" asp-for="Event.PosX">
-                        <span asp-validation-for="Event.PosX" class="text-danger"></span>
-                      </div>
-                      <div class="col-md-4">
-                        <label class="text-white">Y-position</label>
-                        <input  id="PosY" class="form-control" style="-webkit-appearance:none; -moz-appearance: textfield;" placeholder="Y-position" asp-for="Event.PosY">
-                       <span asp-validation-for="Event.PosY" class="text-danger"></span>
-                      </div>
+                      
                       <div class="col-md-4">
                         <label class="text-white">date: </label>
                         <input  id="Date" class="form-control" asp-for="Event.Date" type="date" value=@Model.Event.Date min="0988-01-01" max="2025-01-01">
