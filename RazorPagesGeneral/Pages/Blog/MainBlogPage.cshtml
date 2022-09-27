@@ -1,0 +1,22 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Blog.MainBlogPageModel
+@{
+}
+<main class="main-content" style="">
+    <div class="container-fluid">
+        @foreach(var i in Model.notes){
+            <a asp-page="/Blog/NoteEditorPage" asp-route-id="@i.Id">
+                
+                    <div class="card m-3">
+                        <div class="card-header text-center">
+                            <h3>@i.title</h3>
+                        </div>
+                        <div class="card-body">
+                            <div>@Html.Raw(i.mainText)</div>
+                        </div>
+                    </div>
+                
+            </a>
+        }
+    </div>
+</main>

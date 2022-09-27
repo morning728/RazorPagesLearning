@@ -19,7 +19,7 @@ builder.Services.AddScoped<ILocationRepository, SQLLocationRepository>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
-                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/LoginPage");
                 });
 
 var app = builder.Build();

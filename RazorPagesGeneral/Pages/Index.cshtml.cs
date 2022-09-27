@@ -7,6 +7,7 @@ using System.Security.Claims;
 
 namespace RazorPagesGeneral.Pages
 {
+    [Authorize(Roles ="Admin")]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
@@ -16,10 +17,9 @@ namespace RazorPagesGeneral.Pages
             _logger = logger;
         }
 
-        [Authorize]
         public IActionResult OnGet()
         {
-            return Content(User.Identity.Name + "aaa");
+            return Content(User.Identity.AuthenticationType + "aaa");
         }
         //public async Task<IActionResult> OnPost()
         //{
