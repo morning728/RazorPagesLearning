@@ -31,7 +31,6 @@ namespace RazorPagesGeneral.Pages.Locations
         public void OnGet(int id)
         {
             Location = _db_locations.GetLocationByID(id);
-            Console.WriteLine(Location.Id);
             events = _db.GetAllEvents();
             //Event = new Event(728);
         }

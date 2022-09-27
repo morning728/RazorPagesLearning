@@ -1,0 +1,31 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Blog.NoteEditorPageModel
+@{
+}
+<link href="~/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="~/js/froala_editor.pkgd.min.js"></script>
+<main class="main-content" style="">
+    <div class="container-fluid">
+
+    
+
+    <section name="Editor">
+        <form method="post">
+            <div class="card">
+                <div class="card-header">
+                    <textarea name="title" asp-for="title"></textarea>
+                </div>
+                <div class="card-body">
+                    <textarea name="mainText" id="editor" asp-for="mainText"></textarea>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
+        </section>
+    </div>
+    <script>
+        var editor = new FroalaEditor("#editor");
+    </script>
+</main>

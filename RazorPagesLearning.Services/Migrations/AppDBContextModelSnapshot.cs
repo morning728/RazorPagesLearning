@@ -70,6 +70,29 @@ namespace RazorPagesLearning.Services.Migrations
                     b.ToTable("Locations");
                 });
 
+            modelBuilder.Entity("RazorPagesLearning.Models.Note", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mainText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notes");
+                });
+
             modelBuilder.Entity("RazorPagesLearning.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -85,9 +108,21 @@ namespace RazorPagesLearning.Services.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("role")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            login = "secretAdminLogin",
+                            password = "123456",
+                            role = "Admin"
+                        });
                 });
 #pragma warning restore 612, 618
         }

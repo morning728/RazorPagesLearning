@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPagesLearning.Models;
@@ -5,6 +6,7 @@ using RazorPagesLearning.Services.LocationRepository;
 
 namespace RazorPagesGeneral.Pages.Main
 {
+    [Authorize]
     public class MainPageModel : PageModel
     {
         private readonly ILocationRepository _db;

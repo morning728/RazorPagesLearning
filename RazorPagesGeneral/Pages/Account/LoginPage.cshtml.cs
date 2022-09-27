@@ -9,13 +9,13 @@ using System.Security.Claims;
 
 namespace RazorPagesGeneral.Pages.Account
 {
-    public class RegisterModel : PageModel
+    public class IndexModel : PageModel
     {
         private AppDBContext db;
 
         [BindProperty]
         public User user { get; set; }
-        public RegisterModel(AppDBContext context)
+        public IndexModel(AppDBContext context)
         {
             db = context;
         }
@@ -25,31 +25,24 @@ namespace RazorPagesGeneral.Pages.Account
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
-            User usr = await db.Users.FirstOrDefaultAsync(u => u.login == user.login);
-            Console.WriteLine(user.password);
-            if (usr == null)
+            User usr = await db.Users.FirstOrDefaultAsync(u => u.login == user.login && u.password == user.password);
+            if (usr != null)
             {
-                // добавляем пользователя в бд
-                db.Users.Add(new User { login = user.login, password = user.password });
-                await db.SaveChangesAsync();
-                Console.WriteLine("Добро пожаловать в C#!");
+                await Authenticate(usr); // аутентификация
 
-                await Authenticate(user.login); // аутентификация
-
-                return RedirectToAction("Main/MainPage");
+                return RedirectToPage("/Main/MainPage");
             }
-            else
-                return Page();
+            return RedirectToPage("/Account/RegisterPage");
         }
-
-        private async Task Authenticate(string userName)
+        private async Task Authenticate(User user)
         {
             // создаем один claim
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.login),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.role),
             };
             // создаем объект ClaimsIdentity
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

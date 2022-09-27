@@ -12,7 +12,14 @@
                     <h3>@Model.EventName</h3>
                 </div>
                 <div class="card-body">
-                    <p style="margin-top:10px">Description: @Model.Description</p>
+                    @if (Model.Description.Length < 35)
+                    {
+                        <p style="margin-top:10px">Description: @Model.Description</p>
+                    }
+                    else
+                    {
+                        <p style="margin-top:10px">Description: its too fucking long, read in the inner card^-^</p>
+                    }
                 </div>
             </div>
         </div>

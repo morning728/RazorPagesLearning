@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Security.Claims
 @model RazorPagesGeneral.Pages.Locations.EventEditPageModel
 @{
     string path = $"/images/{Model.Event.PhotoPath ?? "noImageCase.jpg"}";
@@ -68,8 +69,10 @@
                     <div class="row">
                         <div class="row form-group">
                           <div class="col-md-12" style="left:25em">
+                              @if(User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value == "Admin"){
                             <input type="submit" value="change" 
                                 class="btn btn-primary btn-md text-white" asp-route-id="@Model.Event.LocationId">
+                              }
                             <a value="back" class="btn btn-primary btn-md text-white" 
                                 asp-page="/Locations/LocationPage" asp-route-id="@Model.Event.LocationId">back</a>
                           </div>
