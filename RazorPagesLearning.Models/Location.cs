@@ -11,6 +11,7 @@ namespace RazorPagesLearning.Models
         [MaxLength(50)]
         public string Name { get; set; }
         public string? PhotoPath { get; set; }
+        public string UserLogin { get; set; }
 
     }
 }
